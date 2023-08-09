@@ -1,0 +1,46 @@
+name: Deploy
+run-name: "Deploy to: ${{ inputs.environment }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        description: environment
+        type: string 
+
+jobs:
+  deploy:
+    name: "Deploy to: ${{ inputs.environment }}"
+    runs-on: ubuntu-latest
+    environment: "${{ inputs.environment }}"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Sanity CLI
+        run: npm install -g @sanity/cli
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Sanity
+        env:
+          SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
+          SANITY_DATASET: ${{ vars.SANITY_DATASET }}
+          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
+        run: |
+          SANITY_AUTH_TOKEN=${{ secrets.SANITY_TOKEN }} sanity deploy
+          echo 'Success! Studio deployed to [https://junviglund.sanity.studio](https://junviglund.sanity.studio)' >> $GITHUB_STEP_SUMMARY

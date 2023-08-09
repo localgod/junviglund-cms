@@ -1,0 +1,29 @@
+name: Trigger CMS deploy to Production
+run-name: Trigger CMS deploy to Production
+on:
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    name: Trigger CMS deploy to Production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger CMS deploy to Production
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            ORG: localgod
+            REPO: junviglund-cms
+            WORKFLOW: deploy.yml
+            ENVIRONMENT: production # should be development but this env is not created yet
+        run: |
+            curl -X POST \
+                -H "Accept: application/vnd.github.v3+json" \
+                -H "Authorization: Bearer $GITHUB_TOKEN" \
+                https://api.github.com/repos/$ORG/$REPO/actions/workflows/$WORKFLOW/dispatches \
+                -d '{"ref":"main", "inputs": {"environment": "'"$ENVIRONMENT"'"}}'
+
+
+
+     
+
+      
