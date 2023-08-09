@@ -1,8 +1,8 @@
-import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-import {visionTool} from '@sanity/vision'
+import { defineConfig } from 'sanity'
+import { deskTool } from 'sanity/desk'
+import { visionTool } from '@sanity/vision'
 //import {googleMapsInput} from '@sanity/google-maps-input'
-import {schemaTypes} from './schemas/index.js'
+import { schemaTypes } from './schemas/index.js'
 
 export default defineConfig({
   name: 'default',

@@ -4,21 +4,19 @@ permissions:
   actions: write
 on:
   push:
-    branches:    
-      - '**'
+    branches:
+      - "**"
   pull_request:
-    branches:    
-      - '**'
+    branches:
+      - "**"
   workflow_dispatch:
 
 jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Checkout code
         uses: actions/checkout@v3
-
       - name: Cache node modules
         uses: actions/cache@v3
         with:
@@ -38,13 +36,13 @@ jobs:
 
       - name: Trigger CMS deploy to development
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            REPOSITORY: ${{ github.repository }}
-            WORKFLOW: deploy.yml
-            ENVIRONMENT: stage # should be development but this env is not created
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+          WORKFLOW: deploy.yml
+          ENVIRONMENT: stage # should be development but this env is not created
         run: |
-            curl -X POST \
-                -H "Accept: application/vnd.github.v3+json" \
-                -H "Authorization: Bearer $GITHUB_TOKEN" \
-                https://api.github.com/repos/$REPOSITORY/actions/workflows/$WORKFLOW/dispatches \
-                -d '{"ref":"main", "inputs": {"environment": "'"$ENVIRONMENT"'"}}'
+          curl -X POST \
+              -H "Accept: application/vnd.github.v3+json" \
+              -H "Authorization: Bearer $GITHUB_TOKEN" \
+              https://api.github.com/repos/$REPOSITORY/actions/workflows/$WORKFLOW/dispatches \
+              -d '{"ref":"main", "inputs": {"environment": "'"$ENVIRONMENT"'"}}'

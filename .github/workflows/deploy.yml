@@ -7,7 +7,7 @@ on:
       environment:
         required: true
         description: environment
-        type: string 
+        type: string
 
 jobs:
   deploy:
