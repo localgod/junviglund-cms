@@ -1,5 +1,7 @@
 name: CI
 run-name: Continuous Integration
+permissions:
+  actions: write
 on:
   push:
     branches:    
