@@ -9,7 +9,7 @@ export default defineConfig({
   title: 'junviglund',
 
   projectId: 'uy0ayswl',
-  dataset: 'production',
+  dataset: process.env.SANITY_DATASET || 'stage',
 
   plugins: [
     deskTool(),
