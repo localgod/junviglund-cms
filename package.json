@@ -12,7 +12,8 @@
     "deploy-graphql": "sanity graphql deploy",
     "lint": "eslint --ignore-path .gitignore --ext .mts .",
     "lintfix": "eslint --ignore-path .gitignore --fix --ext .ts .",
-    "export": "sanity dataset export production"
+    "export": "sanity dataset export production",
+    "import": "sanity dataset import ./production.tar.gz stage"
   },
   "keywords": [
     "sanity"
