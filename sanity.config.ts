@@ -20,4 +20,27 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
+
+  vite: (prevConfig) => ({
+    ...prevConfig,
+    server: {
+      ...prevConfig.server,
+      host: '0.0.0.0',
+      hmr: {
+        clientPort: 3333,
+      },
+    },
+    plugins: [
+      ...(prevConfig.plugins || []),
+      {
+        name: 'allow-all-hosts',
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            // Remove host check by not validating the Host header
+            next()
+          })
+        },
+      },
+    ],
+  }),
 })
