@@ -1,5 +1,5 @@
 import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
+import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 //import {googleMapsInput} from '@sanity/google-maps-input'
 import { schemaTypes } from './schemas/index.js'
@@ -12,7 +12,7 @@ export default defineConfig({
   dataset: process.env.SANITY_DATASET || 'stage',
 
   plugins: [
-    deskTool(),
+    structureTool(),
     visionTool(),
     //googleMapsInput(),
   ],

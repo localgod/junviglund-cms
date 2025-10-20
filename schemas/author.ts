@@ -9,23 +9,35 @@ export default defineType({
         name: 'name',
         title: 'Name',
         type: 'string',
+        validation: (Rule) => Rule.required(),
       }),
       defineField({
         name: 'slug',
         title: 'Slug',
+        description: 'URL-friendly identifier for the author',
         type: 'slug',
         options: {
           source: 'name',
           maxLength: 96,
         },
+        validation: (Rule) => Rule.required(),
       }),
       defineField({
         name: 'image',
         title: 'Image',
+        description: 'Author profile photo',
         type: 'image',
         options: {
           hotspot: true,
         },
+        fields: [
+          {
+            name: 'alt',
+            type: 'string',
+            title: 'Alternative text',
+            description: 'Important for SEO and accessibility',
+          },
+        ],
       }),
       defineField({
         name: 'bio',

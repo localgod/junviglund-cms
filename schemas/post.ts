@@ -8,52 +8,79 @@ export default defineType({
         defineField({
             name: 'title',
             title: 'Title',
-            type: 'string', 
+            type: 'string',
+            validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'slug',
             title: 'Slug',
+            description: 'URL-friendly identifier for the post',
             type: 'slug',
             options: {
               source: 'title',
               maxLength: 96,
-            } 
+            },
+            validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'author',
             title: 'Author',
             type: 'reference',
-            to: {type: 'author'},
+            to: [{type: 'author'}],
          }),
          defineField({
             name: 'mainImage',
             title: 'Main image',
+            description: 'Featured image for the post',
             type: 'image',
             options: {
               hotspot: true,
             },
+            fields: [
+              {
+                name: 'alt',
+                type: 'string',
+                title: 'Alternative text',
+                description: 'Important for SEO and accessibility',
+              },
+            ],
         }),
         defineField({
             name: 'images',
-            type: 'array', // supports drag'n'drop of multiple files
+            title: 'Image Gallery',
+            description: 'Additional images for the post',
+            type: 'array',
             options: {
               layout: 'grid'
             },
-
             of: [{
-              type: 'image'
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                {
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alternative text',
+                  description: 'Important for SEO and accessibility',
+                },
+              ],
             }]
         }),
         defineField({
             name: 'categories',
             title: 'Categories',
+            description: 'Organize posts by topic',
             type: 'array',
-            of: [{type: 'reference', to: {type: 'category'}}],
+            of: [{type: 'reference', to: [{type: 'category'}]}],
         }),
         defineField({
             name: 'publishedAt',
             title: 'Published at',
+            description: 'When the post was published',
             type: 'datetime',
+            initialValue: () => new Date().toISOString(),
         }),
         defineField({
             name: 'body',

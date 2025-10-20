@@ -1,7 +1,0 @@
-{
-  "extends": "@sanity/eslint-config-studio",
-  "ignorePatterns": [
-    "node_modules/**/*",
-     "dist/*"
-  ]
-}
