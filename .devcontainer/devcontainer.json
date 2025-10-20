@@ -1,9 +1,9 @@
 {
 	"name": "Ona",
 	"build": {
-        "context": ".",
-        "dockerfile": "Dockerfile"
-    },
+		"context": "..",
+		"dockerfile": ".devcontainer/Dockerfile"
+	},
 	"features": {
 		"ghcr.io/devcontainers/features/docker-in-docker": {
 			"moby": false
@@ -12,14 +12,17 @@
 			"nodeGypDependencies": true,
 			"version": "lts",
 			"nvmVersion": "latest"
-		}
+		},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/lukewiwa/features/shellcheck:0":{}
 	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"DavidAnson.vscode-markdownlint",
 				"usernamehw.errorlens",
-                "Vue.volar"
+				"Vue.volar",
+				"dbaeumer.vscode-eslint",
+				"medo64.render-crlf"
 			]
 		}
 	}
