@@ -33,7 +33,7 @@
     "@types/react": "^19.2.9",
     "@types/styled-components": "^5.1.36",
     "@typescript-eslint/eslint-plugin": "^8.53.1",
-    "@typescript-eslint/parser": "^8.53.0",
+    "@typescript-eslint/parser": "^8.54.0",
     "eslint": "^9.39.1",
     "prettier": "^3.8.0",
     "typescript": "^5.9.3"
