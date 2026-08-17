@@ -34,7 +34,7 @@
     "@types/styled-components": "^5.1.36",
     "@typescript-eslint/eslint-plugin": "^8.66.0",
     "@typescript-eslint/parser": "^8.66.0",
-    "eslint": "^10.8.0",
+    "eslint": "^10.8.1",
     "prettier": "^3.9.6",
     "typescript": "^7.0.2"
   },
