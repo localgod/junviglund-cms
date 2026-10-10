@@ -18,7 +18,8 @@ This project provides a headless CMS interface built on Sanity v4, featuring:
 - **React** 19.0.0 - UI framework
 - **TypeScript** 5.9.3 - Type-safe development
 - **Node.js** v22 LTS - Runtime environment
-- **ESLint** - Modern flat config with Sanity studio rules
+- **Oxlint** - Fast JavaScript and TypeScript linting
+- **Oxfmt** - Prettier-compatible code formatting
 - **Vite** - Build tooling
 
 ## Getting Started
@@ -83,6 +84,7 @@ junviglund-cms/
 ## Content Model
 
 ### Post
+
 - Title (required)
 - Slug (required, auto-generated)
 - Author (reference)
@@ -93,12 +95,14 @@ junviglund-cms/
 - Rich text body
 
 ### Author
+
 - Name (required)
 - Slug (required, auto-generated)
 - Profile image with alt text
 - Biography
 
 ### Category
+
 - Title (required)
 - Description
 
@@ -111,6 +115,8 @@ npm run deploy           # Deploy studio to Sanity hosting
 npm run deploy-graphql   # Deploy GraphQL API
 npm run lint             # Lint TypeScript files
 npm run lintfix          # Auto-fix linting issues
+npm run format           # Format supported files
+npm run format:check     # Check formatting without writing files
 npm run export           # Export production dataset
 npm run import           # Import dataset to stage
 ```
@@ -139,7 +145,7 @@ This project includes:
 - **Dev Container** configuration for consistent development environments
 - **GitHub Actions** workflows for CI/CD
 - **Dependabot** for automated dependency updates
-- **ESLint** with modern flat config format
+- **Oxlint** and **Oxfmt** for linting and formatting
 
 ## License
 
