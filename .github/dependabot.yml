@@ -6,8 +6,6 @@ updates:
       interval: weekly
       time: '00:00'
     open-pull-requests-limit: 10
-    reviewers:
-      - localgod
     assignees:
       - localgod
     commit-message:
@@ -20,8 +18,6 @@ updates:
       interval: weekly
       time: '00:00'
     open-pull-requests-limit: 10
-    reviewers:
-      - localgod
     assignees:
       - localgod
     commit-message:

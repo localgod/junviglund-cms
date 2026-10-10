@@ -127,10 +127,10 @@ npm run import           # Import dataset to stage
 
 ### Datasets
 
-The active dataset is controlled by the `SANITY_DATASET` environment variable:
+The active dataset is controlled by the `SANITY_STUDIO_DATASET` environment variable:
 
 ```bash
-SANITY_DATASET=production npm run dev
+SANITY_STUDIO_DATASET=production npm run dev
 ```
 
 Default: `stage`
