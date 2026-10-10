@@ -5,5 +5,5 @@
   "bracketSpacing": false,
   "singleQuote": true,
   "sortPackageJson": false,
-  "ignorePatterns": ["dist/**", ".sanity/**"]
+  "ignorePatterns": ["dist/**", ".sanity/**", ".agents/**", "skills-lock.json"]
 }

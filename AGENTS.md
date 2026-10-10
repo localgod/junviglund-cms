@@ -2,7 +2,9 @@
 
 ## Project Overview
 
-**junviglund-cms** is a Sanity CMS content studio for managing blog content. It provides a structured content management interface for posts, authors, and categories with rich text editing capabilities.
+**junviglund-cms** is a Sanity CMS content studio for managing blog content. It provides a
+structured content management interface for posts, authors, and categories with rich text editing
+capabilities.
 
 **Project ID**: `uy0ayswl`  
 **Default Dataset**: `stage` (configurable via `SANITY_DATASET` env var)
@@ -16,7 +18,7 @@
 - **Sanity CMS v4.10.2** - Headless CMS platform
 - **React 19.0.0** - UI framework
 - **TypeScript 5.9.3** - Type-safe development
-- **Node.js v22 LTS** - Runtime environment
+- **Node.js v24 LTS** - Runtime environment
 
 ### Key Dependencies
 
@@ -35,7 +37,7 @@
 
 ## Project Structure
 
-```
+```text
 junviglund-cms/
 ├── schemas/              # Sanity schema definitions
 │   ├── index.ts         # Schema registry (exports schemaTypes)
@@ -230,7 +232,7 @@ npm run import           # Import dataset to stage
 
 ### Starting Development
 
-1. Ensure Node.js v22 LTS is installed
+1. Ensure Node.js v24 LTS is installed
 2. Run `npm install` to install dependencies
 3. Run `npm run dev` to start the studio
 4. Access studio at the provided URL (typically port 3333)
@@ -275,9 +277,8 @@ Set `SANITY_DATASET` environment variable to switch datasets (e.g., `production`
 
 Project includes dev container configuration with:
 
-- Docker-in-Docker support
-- Node.js LTS with nvm
-- VSCode extensions: markdownlint, errorlens, Volar
+- Node.js v24 LTS on the official Dev Containers JavaScript image
+- GitHub CLI support through the official Dev Container feature
 
 ---
 

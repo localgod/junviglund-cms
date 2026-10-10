@@ -1,10 +1,11 @@
 # junviglund-cms
 
-Sanity CMS content studio for managing blog content with a structured content model for posts, authors, and categories.
+Sanity CMS content studio for managing blog content with a structured content model for posts,
+authors, and categories.
 
 ## Overview
 
-This project provides a headless CMS interface built on Sanity v4, featuring:
+This project provides a headless CMS interface built on Sanity v6, featuring:
 
 - **Post Management** - Blog posts with rich text editing, image galleries, and categorization
 - **Author Profiles** - Author information with biographical content and profile images
@@ -14,10 +15,10 @@ This project provides a headless CMS interface built on Sanity v4, featuring:
 
 ## Tech Stack
 
-- **Sanity CMS** v4.10.3 - Headless CMS platform
-- **React** 19.0.0 - UI framework
-- **TypeScript** 5.9.3 - Type-safe development
-- **Node.js** v22 LTS - Runtime environment
+- **Sanity CMS** 6.18.0 - Headless CMS platform
+- **React** 19.3.0 - UI framework
+- **TypeScript** 7.0.2 - Type-safe development
+- **Node.js** v24 LTS - Runtime environment
 - **Oxlint** - Fast JavaScript and TypeScript linting
 - **Oxfmt** - Prettier-compatible code formatting
 - **Vite** - Build tooling
@@ -26,7 +27,7 @@ This project provides a headless CMS interface built on Sanity v4, featuring:
 
 ### Prerequisites
 
-- Node.js v22 LTS
+- Node.js v24 LTS
 - npm
 
 ### Installation
@@ -69,7 +70,7 @@ npm run deploy-graphql
 
 ## Project Structure
 
-```
+```text
 junviglund-cms/
 ├── schemas/              # Sanity schema definitions
 │   ├── post.ts          # Blog post schema
@@ -115,6 +116,7 @@ npm run deploy           # Deploy studio to Sanity hosting
 npm run deploy-graphql   # Deploy GraphQL API
 npm run lint             # Lint TypeScript files
 npm run lintfix          # Auto-fix linting issues
+npm run typecheck        # Check TypeScript types without emitting files
 npm run format           # Format supported files
 npm run format:check     # Check formatting without writing files
 npm run export           # Export production dataset
