@@ -1,9 +1,11 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import process from 'node:process'
 import type {Plugin, UserConfig} from 'vite'
 import {schemaTypes} from './schemas/index.js'
+
+const dataset = import.meta.env.SANITY_STUDIO_DATASET || 'stage'
+const previewUrl = import.meta.env.SANITY_STUDIO_PREVIEW_URL || 'https://junviglund.com'
 
 const allowAllHostsPlugin = {
   name: 'allow-all-hosts',
@@ -17,7 +19,7 @@ export default defineConfig({
   title: 'Junviglund CMS',
 
   projectId: 'uy0ayswl',
-  dataset: process.env.SANITY_DATASET || 'stage',
+  dataset,
 
   plugins: [
     structureTool(),
@@ -41,7 +43,7 @@ export default defineConfig({
         'current' in slug &&
         typeof slug.current === 'string'
       ) {
-        return `${process.env.SANITY_STUDIO_PREVIEW_URL || 'https://junviglund.com'}/posts/${slug.current}`
+        return `${previewUrl}/posts/${slug.current}`
       }
       return prev
     },

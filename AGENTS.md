@@ -7,7 +7,7 @@ structured content management interface for posts, authors, and categories with 
 capabilities.
 
 **Project ID**: `uy0ayswl`  
-**Default Dataset**: `stage` (configurable via `SANITY_DATASET` env var)
+**Default Dataset**: `stage` (configurable via `SANITY_STUDIO_DATASET` env var)
 
 ---
 
@@ -268,10 +268,10 @@ npm run import           # Import dataset to stage
 The active dataset is determined by:
 
 ```typescript
-dataset: process.env.SANITY_DATASET || 'stage'
+dataset: import.meta.env.SANITY_STUDIO_DATASET || 'stage'
 ```
 
-Set `SANITY_DATASET` environment variable to switch datasets (e.g., `production`, `stage`).
+Set `SANITY_STUDIO_DATASET` environment variable to switch datasets (e.g., `production`, `stage`).
 
 ### Dev Container
 
