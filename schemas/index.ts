@@ -5,9 +5,9 @@ import category from './category'
 
 export const schemaTypes = [
   // Document types
-post,
-author,
-category,
+  post,
+  author,
+  category,
 
   // Other types
   blockContent,

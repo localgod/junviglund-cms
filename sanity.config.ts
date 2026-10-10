@@ -1,7 +1,16 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
+import process from 'node:process'
+import type {Plugin, UserConfig} from 'vite'
 import {schemaTypes} from './schemas/index.js'
+
+const allowAllHostsPlugin = {
+  name: 'allow-all-hosts',
+  configureServer(server) {
+    server.middlewares.use((_request, _response, next) => next())
+  },
+} satisfies Plugin
 
 export default defineConfig({
   name: 'default',
@@ -24,14 +33,21 @@ export default defineConfig({
   document: {
     productionUrl: async (prev, context) => {
       const {document} = context
-      if (document._type === 'post' && document.slug?.current) {
-        return `${process.env.SANITY_STUDIO_PREVIEW_URL || 'https://junviglund.com'}/posts/${document.slug.current}`
+      const slug = document._type === 'post' ? document.slug : undefined
+
+      if (
+        slug &&
+        typeof slug === 'object' &&
+        'current' in slug &&
+        typeof slug.current === 'string'
+      ) {
+        return `${process.env.SANITY_STUDIO_PREVIEW_URL || 'https://junviglund.com'}/posts/${slug.current}`
       }
       return prev
     },
   },
 
-  vite: (prevConfig) => ({
+  vite: (prevConfig: UserConfig) => ({
     ...prevConfig,
     server: {
       ...prevConfig.server,
@@ -40,16 +56,6 @@ export default defineConfig({
         clientPort: 3333,
       },
     },
-    plugins: [
-      ...(prevConfig.plugins || []),
-      {
-        name: 'allow-all-hosts',
-        configureServer(server) {
-          server.middlewares.use((req, res, next) => {
-            next()
-          })
-        },
-      },
-    ],
+    plugins: [...(prevConfig.plugins || []), allowAllHostsPlugin],
   }),
 })

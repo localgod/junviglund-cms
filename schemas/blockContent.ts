@@ -1,4 +1,4 @@
-import {defineArrayMember, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -41,18 +41,23 @@ export default defineType({
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
-          {
+          defineArrayMember({
             title: 'URL',
             name: 'link',
             type: 'object',
             fields: [
-              {
+              defineField({
                 title: 'URL',
                 name: 'href',
                 type: 'url',
-              },
+                validation: (rule) =>
+                  rule
+                    .required()
+                    .uri({scheme: ['http', 'https']})
+                    .error('Enter a complete URL starting with http:// or https://'),
+              }),
             ],
-          },
+          }),
         ],
       },
     }),
@@ -62,6 +67,15 @@ export default defineType({
     defineArrayMember({
       type: 'image',
       options: {hotspot: true},
+      fields: [
+        defineField({
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description: 'Describe the image for accessibility and SEO',
+          validation: (rule) => rule.required(),
+        }),
+      ],
     }),
   ],
 })
