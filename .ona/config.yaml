@@ -1,0 +1,30 @@
+tasks:
+  install-dependencies:
+    name: Install dependencies
+    command: npm ci
+    triggeredBy:
+      - manual
+      - postDevcontainerStart
+      - prebuild
+
+  build:
+    name: Build
+    command: npm run build
+    dependsOn:
+      - install-dependencies
+    triggeredBy:
+      - manual
+
+services:
+  sanity-studio:
+    name: Sanity Studio
+    commands:
+      start: |
+        ona environment port open 3333 --admission creator_only --name "Sanity Studio"
+        export ONA_EXPOSED_HOST="$(ona environment port get 3333 -f URL | cut -c 9-)"
+        export __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS="$ONA_EXPOSED_HOST"
+        npm run dev -- --port 3333
+      ready: curl -fsS http://localhost:3333
+    triggeredBy:
+      - manual
+      - postEnvironmentStart
