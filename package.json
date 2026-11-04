@@ -34,7 +34,7 @@
     "styled-components": "^6.6.0"
   },
   "devDependencies": {
-    "@types/node": "^26.6.5",
+    "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "@types/styled-components": "^5.1.36",
     "oxfmt": "^0.74.0",
